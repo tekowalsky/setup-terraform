@@ -1,4 +1,9 @@
 #!/usr/bin/env node
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const io = require('@actions/io');
 const core = require('@actions/core');
 const { exec } = require('@actions/exec');
@@ -28,13 +33,14 @@ async function checkTerraform () {
   const args = process.argv.slice(2);
   const options = {
     listeners,
-    ignoreReturnCode: true
+    ignoreReturnCode: true,
+    silent: true, // avoid printing command in stdout: https://github.com/actions/toolkit/issues/649
   };
   const exitCode = await exec(pathToCLI, args, options);
-  core.debug(`Terraform exited with code ${exitCode}.`);
-  core.debug(`stdout: ${stdout.contents}`);
-  core.debug(`stderr: ${stderr.contents}`);
-  core.debug(`exitcode: ${exitCode}`);
+
+  // Pass-through stdout/err as `exec` won't due to `silent: true` option
+  process.stdout.write(stdout.contents);
+  process.stderr.write(stderr.contents);
 
   // Set outputs, result, exitcode, and stderr
   core.setOutput('stdout', stdout.contents);
