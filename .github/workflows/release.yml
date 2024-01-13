@@ -12,8 +12,8 @@ permissions:
   contents: read # Changelog commit operations use service account PAT
 
 env:
-  CI_COMMIT_AUTHOR: hc-github-team-tf-provider-devex
-  CI_COMMIT_EMAIL: github-team-tf-provider-devex@hashicorp.com
+  CI_COMMIT_AUTHOR: ${{ github.actor }}
+  CI_COMMIT_EMAIL:  "${{ github.actor_id }}+${{ github.actor }}@no-reply.github.com"
 
 jobs:
   major-version:
@@ -35,6 +35,8 @@ jobs:
   changelog:
     needs: changelog-version
     runs-on: ubuntu-latest
+    env: 
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -59,7 +61,7 @@ jobs:
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
           git add .
           git commit -a -m "Update changelog"
-          git push "https://${{ env.CI_COMMIT_AUTHOR }}:${{ secrets.TF_DEVEX_COMMIT_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push "https://${{ env.CI_COMMIT_AUTHOR }}:${{ env.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
 
   update-package-version:
     needs: changelog
