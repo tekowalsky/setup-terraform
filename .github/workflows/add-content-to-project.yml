@@ -23,8 +23,8 @@ jobs:
         if: github.event_name == 'issues'
         with:
           gh_token: ${{ secrets.TF_DEVEX_PROJECT_GITHUB_TOKEN }}
-          organization: "hashicorp"
-          project_id: 99      #< https://github.com/orgs/hashicorp/projects/99
+          organization: "tekowalsky"
+          project_id: 99      #< https://github.com/orgs/tekowalsky/projects/99
           resource_node_id: ${{ github.event.issue.node_id }}
           operation_mode: custom_field
           custom_field_values: '[{\"name\":\"Priority\",\"type\":\"single_select\",\"value\":\"Triage Next\"}]'
@@ -33,8 +33,8 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           gh_token: ${{ secrets.TF_DEVEX_PROJECT_GITHUB_TOKEN }}
-          organization: "hashicorp"
-          project_id: 99      #< https://github.com/orgs/hashicorp/projects/99
+          organization: "tekowalsky"
+          project_id: 99      #< https://github.com/orgs/tekowalsky/projects/99
           resource_node_id: ${{ github.event.pull_request.node_id }}
           operation_mode: custom_field
           custom_field_values: '[{\"name\":\"Priority\",\"type\":\"single_select\",\"value\":\"Triage Next\"}]'
