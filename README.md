@@ -1,9 +1,11 @@
 # setup-terraform
 
-[![Continuous Integration](https://github.com/hashicorp/setup-terraform/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/hashicorp/setup-terraform/actions/workflows/continuous-integration.yml)
-[![Setup Terraform](https://github.com/hashicorp/setup-terraform/actions/workflows/setup-terraform.yml/badge.svg)](https://github.com/hashicorp/setup-terraform/actions/workflows/setup-terraform.yml)
+[![Continuous Integration](https://github.com/tekowalsky/setup-terraform/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/tekowalsky/setup-terraform/actions/workflows/continuous-integration.yml)
+[![Setup Terraform](https://github.com/tekowalsky/setup-terraform/actions/workflows/setup-terraform.yml/badge.svg)](https://github.com/tekowalsky/setup-terraform/actions/workflows/setup-terraform.yml)
 
-The `hashicorp/setup-terraform` action is a JavaScript action that sets up Terraform CLI in your GitHub Actions workflow by:
+Forked from `hashicorp/setup-terraform`
+
+The `setup-terraform` action is a JavaScript action that sets up Terraform CLI in your GitHub Actions workflow by:
 
 - Downloading a specific version of Terraform CLI and adding it to the `PATH`.
 - Configuring the [Terraform CLI configuration file](https://www.terraform.io/docs/commands/cli-config.html) with a Terraform Cloud/Enterprise hostname and API token.
