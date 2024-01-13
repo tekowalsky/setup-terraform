@@ -70,3 +70,8 @@ wrapper/dist
 # Jetbrains IDEs
 .idea/
 .iml
+
+# Old or archived files
+*.old
+*.*.old
+archive/
